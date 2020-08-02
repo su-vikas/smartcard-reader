@@ -38,8 +38,9 @@ public class GpoApdu extends CommandApdu {
     public static GpoApdu getGpoApdu(DOL pdol, EMVApp app) {
         if (pdol != null && pdol.getTagAndLengthList().size() > 0) {
             byte[] pdolResponseData = EMVTerminal.constructDOLResponse(pdol, app);
-            String data = Util.int2Hex(pdolResponseData.length + 2) + "83" +
-                Util.int2Hex(pdolResponseData.length) + Util.bytesToHex(pdolResponseData);
+            //String data = Util.int2Hex(pdolResponseData.length + 2) + "83" + Util.int2Hex(pdolResponseData.length) + Util.bytesToHex(pdolResponseData);
+
+            String data = "83" + Util.int2Hex(pdolResponseData.length) + Util.bytesToHex(pdolResponseData);
             return new GpoApdu(Util.hexToBytes(data));
         } else {
             return new GpoApdu();

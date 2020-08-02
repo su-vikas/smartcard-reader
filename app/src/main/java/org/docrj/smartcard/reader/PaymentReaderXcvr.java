@@ -369,7 +369,13 @@ public class PaymentReaderXcvr extends ReaderXcvr {
                                     app.setIssuerIdNumber(iin);
                                 } else if (tlv.getTag().equals(EMVTags.ISSUER_COUNTRY_CODE_ALPHA3)) {
                                     app.setIssuerCCAlpha3(Util.getSafePrintChars(tlv.getValueBytes()));
-                                } else {
+                                } else if (tlv.getTag().equals(VISATags.APPLICATION_SELECTION_REGISTERED_PROPRIETARY_DATA)){
+                                    //TODO: dunno what to do with this
+                                } else if(tlv.getTag().equals(VISATags.APPLICATION_PROGRAM_IDENTIFIER)){
+                                    //TODO: dunno what to do with this either
+                                }else if(tlv.getTag().equals(VISATags.ISSUER_PROPRIETARY_BITMAP)){
+                                    //TODO: dunno that to do again
+                                }else {
                                     checkForProprietaryTagOrAddToUnhandled(app, tlv);
                                 }
                             }
@@ -462,6 +468,15 @@ public class PaymentReaderXcvr extends ReaderXcvr {
                     byte[] aflBytes = tlv.getValueBytes();
                     AppFileLocator afl = new AppFileLocator(aflBytes);
                     app.setAppFileLocator(afl);
+                } else if (tlv.getTag().equals(EMVTags.APP_CRYPTOGRAM)) {
+                    byte[] cryptogram = tlv.getValueBytes();
+                    //TODO dunno what to do with this
+                } else if(tlv.getTag().equals(EMVTags.PAN_SEQUENCE_NUMBER)){
+                   byte[] panSequenceNumber = tlv.getValueBytes();
+                    //TODO dunno what to do with this
+                } else if(tlv.getTag().equals(EMVTags.APP_TRANSACTION_COUNTER)){
+                    byte[] appTransactionCounter = tlv.getValueBytes();
+                    //TODO dunno what to do with this
                 } else {
                     checkForProprietaryTagOrAddToUnhandled(app, tlv);
                 }

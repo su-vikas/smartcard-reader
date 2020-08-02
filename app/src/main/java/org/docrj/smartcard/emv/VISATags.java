@@ -58,7 +58,9 @@ public class VISATags {//implements TagProvider {
     public static final Tag VISA_LOG_FORMAT                           = new TagImpl("9f80", TagValueType.BINARY, "Log Format", "");
     
     public static final Tag VISA_LOG_ENTRY                            = new TagImpl("df60", TagValueType.BINARY, "VISA Log Entry ??", "");
-    
+
+    public static final Tag ISSUER_PROPRIETARY_BITMAP                 = new TagImpl("df20", TagValueType.BINARY, "Issuer Proprietary Bitmap", "");
+    public static final Tag APPLICATION_SELECTION_REGISTERED_PROPRIETARY_DATA = new TagImpl("9f0a", TagValueType.BINARY, "Application Selection Registered Proprietary Data", "");
     //TODO refactor to Kernel 3 Tags
     //These are specified in EMV Contactless (Book C-3) "VISA"
     //9f5a 05 3109780380
