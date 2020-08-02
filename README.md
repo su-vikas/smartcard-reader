@@ -1,3 +1,5 @@
+This if a fork of [smartcard-reader](https://github.com/doc-rj/smartcard-reader) project. The original code did not work for VISA EMV Read (VISA Payment). I have fixed a bug related to it and added reading of some additional tags from the APDUs. 
+
 ### smartcard-reader
 
 smartcard-reader turns your Android device (running Kitkat or later) into a
